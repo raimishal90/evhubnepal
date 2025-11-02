@@ -115,6 +115,7 @@ export function SignupForm() {
       // Wait 1.5 seconds before redirecting to allow user to see the success message
       setTimeout(() => {
         router.push("/login")
+        setIsLoading(false)
       }, 1500)
     } catch (error: any) {
       toast.error(error instanceof Error ? error.message : "Signup failed. An unexpected error occurred.")
