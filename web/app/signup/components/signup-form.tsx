@@ -109,11 +109,15 @@ export function SignupForm() {
         password
       })
       
+      // Show success toast and wait before redirecting so user can see it
       toast.success("Account created successfully! Please log in to continue.")
-      router.push("/login")
+      
+      // Wait 1.5 seconds before redirecting to allow user to see the success message
+      setTimeout(() => {
+        router.push("/login")
+      }, 1500)
     } catch (error: any) {
       toast.error(error instanceof Error ? error.message : "Signup failed. An unexpected error occurred.")
-    } finally {
       setIsLoading(false)
     }
   }

@@ -26,7 +26,6 @@ class AuthService {
   }
 
   async signup(userData: SignupData): Promise<AuthData> {
-    debugger;
     try {
       const response = await api.post<AuthData>('/user', userData)
       return response.data
