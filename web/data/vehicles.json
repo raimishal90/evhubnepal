@@ -1,0 +1,659 @@
+{
+  "vehicles": [
+    {
+      "id": "1",
+      "name": "Tesla Model 3",
+      "price": 42990,
+      "range": 358,
+      "power": 283,
+      "image": "/placeholder.svg?height=400&width=600",
+      "isNew": false,
+      "isFeatured": true,
+      "year": 2023,
+      "acceleration": 5.8,
+      "description": "The Tesla Model 3 is an electric four-door sedan manufactured by Tesla. The Model 3 Standard Range Plus delivers 358 miles of range on a single charge with minimal maintenance requirements. It features Tesla's Autopilot system, over-the-air updates, and a minimalist interior with a 15-inch touchscreen.",
+      "brand": "Tesla",
+      "type": "Sedan",
+      "condition": "New",
+      "features": [
+        "Autopilot",
+        "Premium Sound",
+        "Heated Seats",
+        "Glass Roof",
+        "Supercharging",
+        "Mobile Connector",
+        "Premium Interior",
+        "Auto Pilot Navigate",
+        "Sentry Mode",
+        "Dog Mode"
+      ],
+      "specifications": {
+        "batteryCapacity": "75 kWh",
+        "motorType": "Permanent Magnet Synchronous",
+        "drivetrain": "Rear-Wheel Drive",
+        "topSpeed": "140 mph",
+        "chargingTime": "8.5 hours (240V)",
+        "fastChargingTime": "30 minutes (10-80%)",
+        "seatingCapacity": 5,
+        "cargoSpace": "15 cu ft",
+        "weight": "3,582 lbs",
+        "length": "184.8 in",
+        "width": "72.8 in",
+        "height": "56.8 in",
+        "wheelbase": "113.2 in",
+        "groundClearance": "5.5 in"
+      },
+      "safety": {
+        "rating": "5-Star NHTSA",
+        "features": [
+          "Automatic Emergency Braking",
+          "Blind Spot Monitoring",
+          "Lane Departure Warning",
+          "Adaptive Cruise Control",
+          "Forward Collision Warning"
+        ]
+      },
+      "warranty": {
+        "basic": "4 years / 50,000 miles",
+        "battery": "8 years / 120,000 miles",
+        "drivetrain": "8 years / 120,000 miles"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Ford Mustang Mach-E",
+      "price": 45995,
+      "range": 314,
+      "power": 346,
+      "image": "/placeholder.svg?height=400&width=600",
+      "isNew": false,
+      "isFeatured": true,
+      "year": 2023,
+      "acceleration": 5.2,
+      "description": "The Mustang Mach-E is an all-electric SUV from Ford that combines the iconic Mustang design elements with modern electric vehicle technology. It offers impressive range and performance with Ford's SYNC 4A infotainment system and Co-Pilot360 driver assistance features.",
+      "brand": "Ford",
+      "type": "SUV",
+      "condition": "New",
+      "features": [
+        "SYNC 4A",
+        "Panoramic Roof",
+        "Co-Pilot360",
+        "Bang & Olufsen Sound",
+        "Wireless Charging",
+        "FordPass Connect",
+        "Intelligent Range",
+        "Phone As A Key",
+        "Over-the-Air Updates",
+        "Active Park Assist"
+      ],
+      "specifications": {
+        "batteryCapacity": "88 kWh",
+        "motorType": "Permanent Magnet Synchronous",
+        "drivetrain": "All-Wheel Drive",
+        "topSpeed": "111 mph",
+        "chargingTime": "10.1 hours (240V)",
+        "fastChargingTime": "45 minutes (10-80%)",
+        "seatingCapacity": 5,
+        "cargoSpace": "29.7 cu ft",
+        "weight": "4,394 lbs",
+        "length": "185.9 in",
+        "width": "74.1 in",
+        "height": "63.5 in",
+        "wheelbase": "117.5 in",
+        "groundClearance": "8.6 in"
+      },
+      "safety": {
+        "rating": "5-Star NHTSA",
+        "features": [
+          "Pre-Collision Assist",
+          "Blind Spot Information System",
+          "Lane-Keeping System",
+          "Adaptive Cruise Control",
+          "Evasive Steering Assist"
+        ]
+      },
+      "warranty": {
+        "basic": "3 years / 36,000 miles",
+        "battery": "8 years / 100,000 miles",
+        "drivetrain": "5 years / 60,000 miles"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Rivian R1S",
+      "price": 78000,
+      "range": 316,
+      "power": 835,
+      "image": "/placeholder.svg?height=400&width=600",
+      "isNew": true,
+      "isFeatured": true,
+      "year": 2023,
+      "acceleration": 3.0,
+      "description": "The Rivian R1S is an all-electric SUV with exceptional off-road capabilities. With quad-motor AWD and adjustable air suspension, it offers versatility for both daily driving and adventures. Features include a 'Camp Mode', 'Tank Turn' capability, and impressive towing capacity.",
+      "brand": "Rivian",
+      "type": "SUV",
+      "condition": "New",
+      "features": [
+        "Quad-Motor AWD",
+        "Adjustable Air Suspension",
+        "Vegan Leather",
+        "Driver+",
+        "Camp Mode",
+        "Tank Turn",
+        "Wading Capability",
+        "Tow Package",
+        "Gear Guard",
+        "Pet Comfort"
+      ],
+      "specifications": {
+        "batteryCapacity": "135 kWh",
+        "motorType": "Permanent Magnet Synchronous (4 motors)",
+        "drivetrain": "Quad-Motor All-Wheel Drive",
+        "topSpeed": "125 mph",
+        "chargingTime": "12 hours (240V)",
+        "fastChargingTime": "27 minutes (10-80%)",
+        "seatingCapacity": 7,
+        "cargoSpace": "17.6 cu ft",
+        "weight": "7,148 lbs",
+        "length": "200.8 in",
+        "width": "81.8 in",
+        "height": "77.3 in",
+        "wheelbase": "121.1 in",
+        "groundClearance": "14.9 in",
+        "towingCapacity": "7,700 lbs",
+        "wadingDepth": "3+ feet"
+      },
+      "safety": {
+        "rating": "Not yet rated",
+        "features": [
+          "Driver+",
+          "Automatic Emergency Braking",
+          "Blind Spot Monitoring",
+          "Lane Keep Assist",
+          "Adaptive Cruise Control"
+        ]
+      },
+      "warranty": {
+        "basic": "5 years / 60,000 miles",
+        "battery": "8 years / 175,000 miles",
+        "drivetrain": "8 years / 175,000 miles"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Hyundai IONIQ 5",
+      "price": 41450,
+      "range": 303,
+      "power": 320,
+      "image": "/placeholder.svg?height=400&width=600",
+      "isNew": false,
+      "year": 2023,
+      "acceleration": 5.2,
+      "description": "The Hyundai IONIQ 5 is an electric compact crossover SUV with distinctive retro-futuristic styling. Built on Hyundai's Electric-Global Modular Platform (E-GMP), it offers fast charging capabilities, spacious interior with flat floor, and innovative features like Vehicle-to-Load capability.",
+      "brand": "Hyundai",
+      "type": "Crossover",
+      "condition": "New",
+      "features": [
+        "800V Fast Charging",
+        "Vehicle-to-Load",
+        "Relaxation Seats",
+        "Highway Driving Assist",
+        "Digital Side Mirrors",
+        "Augmented Reality HUD",
+        "Wireless Phone Charging",
+        "Premium Audio",
+        "Smart Cruise Control",
+        "Remote Smart Parking"
+      ],
+      "specifications": {
+        "batteryCapacity": "77.4 kWh",
+        "motorType": "Permanent Magnet Synchronous",
+        "drivetrain": "All-Wheel Drive",
+        "topSpeed": "115 mph",
+        "chargingTime": "7.4 hours (240V)",
+        "fastChargingTime": "18 minutes (10-80%)",
+        "seatingCapacity": 5,
+        "cargoSpace": "27.2 cu ft",
+        "weight": "4,481 lbs",
+        "length": "182.5 in",
+        "width": "74.4 in",
+        "height": "63.2 in",
+        "wheelbase": "118.1 in",
+        "groundClearance": "6.1 in"
+      },
+      "safety": {
+        "rating": "5-Star NHTSA",
+        "features": [
+          "Forward Collision-Avoidance Assist",
+          "Blind-Spot Collision-Avoidance Assist",
+          "Lane Keeping Assist",
+          "Driver Attention Warning",
+          "High Beam Assist"
+        ]
+      },
+      "warranty": {
+        "basic": "5 years / 60,000 miles",
+        "battery": "10 years / 100,000 miles",
+        "drivetrain": "10 years / 100,000 miles"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Kia EV6",
+      "price": 42600,
+      "range": 310,
+      "power": 320,
+      "image": "/placeholder.svg?height=400&width=600",
+      "isNew": false,
+      "year": 2023,
+      "acceleration": 4.6,
+      "description": "The Kia EV6 is an electric crossover with sleek styling and impressive performance. Built on the same E-GMP platform as the IONIQ 5, it offers a sportier driving experience with distinctive design elements, advanced technology, and ultra-fast charging capabilities.",
+      "brand": "Kia",
+      "type": "Crossover",
+      "condition": "New",
+      "features": [
+        "Augmented Reality HUD",
+        "Remote Smart Parking",
+        "Premium Meridian Audio",
+        "Heat Pump",
+        "Vehicle-to-Load",
+        "Wireless Phone Charging",
+        "Highway Driving Assist",
+        "Smart Cruise Control",
+        "Surround View Monitor",
+        "Digital Key"
+      ],
+      "specifications": {
+        "batteryCapacity": "77.4 kWh",
+        "motorType": "Permanent Magnet Synchronous",
+        "drivetrain": "All-Wheel Drive",
+        "topSpeed": "117 mph",
+        "chargingTime": "7.3 hours (240V)",
+        "fastChargingTime": "18 minutes (10-80%)",
+        "seatingCapacity": 5,
+        "cargoSpace": "24.5 cu ft",
+        "weight": "4,564 lbs",
+        "length": "184.8 in",
+        "width": "74.4 in",
+        "height": "61.0 in",
+        "wheelbase": "114.2 in",
+        "groundClearance": "6.1 in"
+      },
+      "safety": {
+        "rating": "5-Star NHTSA",
+        "features": [
+          "Forward Collision-Avoidance Assist",
+          "Blind-Spot Collision-Avoidance Assist",
+          "Rear Cross-Traffic Collision-Avoidance Assist",
+          "Lane Following Assist",
+          "Safe Exit Warning"
+        ]
+      },
+      "warranty": {
+        "basic": "5 years / 60,000 miles",
+        "battery": "10 years / 100,000 miles",
+        "drivetrain": "10 years / 100,000 miles"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Lucid Air",
+      "price": 87400,
+      "range": 516,
+      "power": 620,
+      "image": "/placeholder.svg?height=400&width=600",
+      "isNew": true,
+      "year": 2023,
+      "acceleration": 3.5,
+      "description": "The Lucid Air is a luxury electric sedan with class-leading range and performance. Its efficient powertrain and aerodynamic design enable it to travel over 500 miles on a single charge. Features premium materials, advanced driver assistance, and cutting-edge technology throughout.",
+      "brand": "Lucid",
+      "type": "Sedan",
+      "condition": "New",
+      "features": [
+        "DreamDrive Pro",
+        "Glass Canopy Roof",
+        "34-inch Curved Display",
+        "Micro Lens Array Headlights",
+        "21-Speaker Surround Sound",
+        "Massage Seats",
+        "Air Suspension",
+        "Wireless Phone Charging",
+        "Amazon Alexa",
+        "Over-the-Air Updates"
+      ],
+      "specifications": {
+        "batteryCapacity": "118 kWh",
+        "motorType": "Permanent Magnet Synchronous",
+        "drivetrain": "All-Wheel Drive",
+        "topSpeed": "168 mph",
+        "chargingTime": "9.3 hours (240V)",
+        "fastChargingTime": "20 minutes (10-80%)",
+        "seatingCapacity": 5,
+        "cargoSpace": "22.1 cu ft",
+        "weight": "5,203 lbs",
+        "length": "195.9 in",
+        "width": "76.3 in",
+        "height": "55.5 in",
+        "wheelbase": "116.5 in",
+        "groundClearance": "5.5 in"
+      },
+      "safety": {
+        "rating": "5-Star NHTSA",
+        "features": [
+          "DreamDrive Pro",
+          "Automatic Emergency Braking",
+          "Blind Spot Monitoring",
+          "Lane Keep Assist",
+          "Traffic Sign Recognition"
+        ]
+      },
+      "warranty": {
+        "basic": "4 years / 50,000 miles",
+        "battery": "8 years / 100,000 miles",
+        "drivetrain": "8 years / 100,000 miles"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Tesla Model Y",
+      "price": 47990,
+      "range": 330,
+      "power": 384,
+      "image": "/placeholder.svg?height=400&width=600",
+      "isNew": false,
+      "year": 2022,
+      "acceleration": 4.8,
+      "description": "The Tesla Model Y is a compact SUV built on the Model 3 platform. It offers more cargo space and an optional third row while maintaining the performance Tesla is known for. Features include Autopilot, over-the-air updates, and access to Tesla's Supercharger network.",
+      "brand": "Tesla",
+      "type": "SUV",
+      "condition": "Used",
+      "features": [
+        "Autopilot",
+        "Premium Interior",
+        "Heated Seats",
+        "Tow Hitch",
+        "Glass Roof",
+        "Premium Audio",
+        "Mobile Connector",
+        "Sentry Mode",
+        "Dog Mode",
+        "Camp Mode"
+      ],
+      "specifications": {
+        "batteryCapacity": "75 kWh",
+        "motorType": "Permanent Magnet Synchronous",
+        "drivetrain": "All-Wheel Drive",
+        "topSpeed": "135 mph",
+        "chargingTime": "11.5 hours (240V)",
+        "fastChargingTime": "27 minutes (10-80%)",
+        "seatingCapacity": 7,
+        "cargoSpace": "76 cu ft",
+        "weight": "4,416 lbs",
+        "length": "187.0 in",
+        "width": "75.6 in",
+        "height": "63.9 in",
+        "wheelbase": "113.8 in",
+        "groundClearance": "6.6 in",
+        "towingCapacity": "3,500 lbs"
+      },
+      "safety": {
+        "rating": "5-Star NHTSA",
+        "features": [
+          "Automatic Emergency Braking",
+          "Blind Spot Monitoring",
+          "Lane Departure Avoidance",
+          "Forward Collision Warning",
+          "Obstacle Aware Acceleration"
+        ]
+      },
+      "warranty": {
+        "basic": "4 years / 50,000 miles",
+        "battery": "8 years / 120,000 miles",
+        "drivetrain": "8 years / 120,000 miles"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Audi e-tron GT",
+      "price": 104900,
+      "range": 238,
+      "power": 522,
+      "image": "/placeholder.svg?height=400&width=600",
+      "isNew": true,
+      "year": 2023,
+      "acceleration": 3.9,
+      "description": "The Audi e-tron GT is a high-performance electric sports car with stunning design and impressive driving dynamics. It combines luxury with cutting-edge electric technology, featuring Audi's signature quattro all-wheel drive and premium interior appointments.",
+      "brand": "Audi",
+      "type": "Sports Car",
+      "condition": "New",
+      "features": [
+        "Matrix LED Headlights",
+        "Adaptive Air Suspension",
+        "Bang & Olufsen 3D Sound",
+        "Carbon Fiber Trim",
+        "Quattro AWD",
+        "Virtual Cockpit Plus",
+        "MMI Touch Response",
+        "Wireless Charging",
+        "Audi Connect",
+        "Driver Assistance Package"
+      ],
+      "specifications": {
+        "batteryCapacity": "93.4 kWh",
+        "motorType": "Permanent Magnet Synchronous",
+        "drivetrain": "Quattro All-Wheel Drive",
+        "topSpeed": "152 mph",
+        "chargingTime": "9.5 hours (240V)",
+        "fastChargingTime": "23 minutes (5-80%)",
+        "seatingCapacity": 4,
+        "cargoSpace": "12.8 cu ft",
+        "weight": "5,060 lbs",
+        "length": "195.4 in",
+        "width": "76.3 in",
+        "height": "53.5 in",
+        "wheelbase": "114.2 in",
+        "groundClearance": "5.1 in"
+      },
+      "safety": {
+        "rating": "5-Star Euro NCAP",
+        "features": [
+          "Audi Pre Sense",
+          "Adaptive Cruise Control",
+          "Lane Departure Warning",
+          "Blind Spot Monitoring",
+          "Rear Cross Traffic Alert"
+        ]
+      },
+      "warranty": {
+        "basic": "4 years / 50,000 miles",
+        "battery": "8 years / 100,000 miles",
+        "drivetrain": "4 years / 50,000 miles"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Volkswagen ID.4",
+      "price": 38995,
+      "range": 275,
+      "power": 201,
+      "image": "/placeholder.svg?height=400&width=600",
+      "isNew": false,
+      "year": 2022,
+      "acceleration": 7.6,
+      "description": "The Volkswagen ID.4 is an electric compact SUV with a focus on practicality and value. It offers a comfortable ride, spacious interior, and solid range at an accessible price point. Built on VW's MEB platform specifically designed for electric vehicles.",
+      "brand": "Volkswagen",
+      "type": "SUV",
+      "condition": "Used",
+      "features": [
+        "ID. Light",
+        "Massage Seats",
+        "Panoramic Fixed Glass Roof",
+        "Travel Assist",
+        "Wireless App Connect",
+        "Digital Cockpit Pro",
+        "Climatronic",
+        "Keyless Access",
+        "Park Distance Control",
+        "Rearview Camera"
+      ],
+      "specifications": {
+        "batteryCapacity": "82 kWh",
+        "motorType": "Permanent Magnet Synchronous",
+        "drivetrain": "Rear-Wheel Drive",
+        "topSpeed": "99 mph",
+        "chargingTime": "7.5 hours (240V)",
+        "fastChargingTime": "36 minutes (5-80%)",
+        "seatingCapacity": 5,
+        "cargoSpace": "30.3 cu ft",
+        "weight": "4,561 lbs",
+        "length": "185.0 in",
+        "width": "73.3 in",
+        "height": "64.4 in",
+        "wheelbase": "108.9 in",
+        "groundClearance": "8.2 in"
+      },
+      "safety": {
+        "rating": "5-Star Euro NCAP",
+        "features": ["Front Assist", "Blind Spot Monitor", "Lane Assist", "Rear Traffic Alert", "Park Assist"]
+      },
+      "warranty": {
+        "basic": "4 years / 50,000 miles",
+        "battery": "8 years / 100,000 miles",
+        "drivetrain": "8 years / 100,000 miles"
+      }
+    }
+  ],
+  "comingSoonVehicles": [
+    {
+      "id": "101",
+      "name": "Tesla Cybertruck",
+      "estimatedPrice": 50000,
+      "estimatedRange": 500,
+      "releaseDate": "Late 2024",
+      "image": "/placeholder.svg?height=400&width=600",
+      "description": "The Tesla Cybertruck is an all-electric pickup truck with a distinctive angular design and stainless steel exoskeleton. It promises exceptional towing capacity, off-road capability, and Tesla's signature technology features.",
+      "features": [
+        "Bulletproof Body",
+        "Air Suspension",
+        "Autopilot",
+        "Towing Capacity 11,000 lbs",
+        "0-60 in 2.6 seconds",
+        "Adaptive Air Suspension"
+      ],
+      "specifications": {
+        "batteryCapacity": "123 kWh",
+        "towingCapacity": "11,000 lbs",
+        "payloadCapacity": "2,500 lbs",
+        "seatingCapacity": 6
+      }
+    },
+    {
+      "id": "102",
+      "name": "Chevrolet Silverado EV",
+      "estimatedPrice": 42000,
+      "estimatedRange": 400,
+      "releaseDate": "Spring 2024",
+      "image": "/placeholder.svg?height=400&width=600",
+      "description": "The Chevrolet Silverado EV is GM's electric pickup truck offering impressive range, towing capacity, and innovative features like a Multi-Flex Midgate and available four-wheel steering.",
+      "features": [
+        "Multi-Flex Midgate",
+        "Four-Wheel Steering",
+        "Super Cruise",
+        "Towing Capacity 10,000 lbs",
+        "Fast Charging",
+        "Mobile Power Outlet"
+      ],
+      "specifications": {
+        "batteryCapacity": "105 kWh",
+        "towingCapacity": "10,000 lbs",
+        "payloadCapacity": "1,300 lbs",
+        "seatingCapacity": 5
+      }
+    },
+    {
+      "id": "103",
+      "name": "Fisker Ocean",
+      "estimatedPrice": 37499,
+      "estimatedRange": 350,
+      "releaseDate": "Available Now",
+      "image": "/placeholder.svg?height=400&width=600",
+      "description": "The Fisker Ocean is an electric SUV focused on sustainability, featuring recycled materials throughout and a solar roof option. It offers a unique California Mode with all windows down.",
+      "features": [
+        "Solar Roof",
+        "California Mode",
+        "Recycled Materials",
+        "Revolving Screen",
+        "Ocean Drive Mode",
+        "Fisker Intelligent Pilot"
+      ],
+      "specifications": {
+        "batteryCapacity": "80 kWh",
+        "seatingCapacity": 5,
+        "cargoSpace": "22.5 cu ft",
+        "solarRoof": "1,500 miles/year"
+      }
+    },
+    {
+      "id": "104",
+      "name": "Cadillac LYRIQ",
+      "estimatedPrice": 62990,
+      "estimatedRange": 312,
+      "releaseDate": "Available Now",
+      "image": "/placeholder.svg?height=400&width=600",
+      "description": "The Cadillac LYRIQ is a luxury electric SUV featuring Cadillac's signature design language, advanced technology, and premium appointments. It represents Cadillac's entry into the luxury EV market.",
+      "features": [
+        "33-inch LED Display",
+        "Super Cruise",
+        "AKG Audio",
+        "Hands-Free Liftgate",
+        "Wireless Phone Charging",
+        "One-Pedal Driving"
+      ],
+      "specifications": {
+        "batteryCapacity": "100 kWh",
+        "seatingCapacity": 5,
+        "cargoSpace": "28 cu ft",
+        "chargingTime": "76 minutes (10-90%)"
+      }
+    },
+    {
+      "id": "105",
+      "name": "Polestar 3",
+      "estimatedPrice": 65000,
+      "estimatedRange": 300,
+      "releaseDate": "Early 2024",
+      "image": "/placeholder.svg?height=400&width=600",
+      "description": "The Polestar 3 is a luxury electric SUV from Volvo's performance brand, featuring Scandinavian design, advanced safety technology, and impressive performance capabilities.",
+      "features": [
+        "Air Suspension",
+        "Google Built-in",
+        "Pilot Assist",
+        "Bowers & Wilkins Audio",
+        "Performance Pack",
+        "22-inch Wheels"
+      ],
+      "specifications": {
+        "batteryCapacity": "111 kWh",
+        "seatingCapacity": 5,
+        "cargoSpace": "32 cu ft",
+        "towingCapacity": "5,000 lbs"
+      }
+    },
+    {
+      "id": "106",
+      "name": "Volkswagen ID. Buzz",
+      "estimatedPrice": 55000,
+      "estimatedRange": 260,
+      "releaseDate": "Summer 2024",
+      "image": "/placeholder.svg?height=400&width=600",
+      "description": "The Volkswagen ID. Buzz is an electric revival of the iconic VW Bus, featuring modern technology in a retro-inspired design. It offers flexible seating and cargo configurations.",
+      "features": ["Flexible Seating", "Panoramic Roof", "ID. Light", "Travel Assist", "Cargo Mode", "Lounge Seating"],
+      "specifications": {
+        "batteryCapacity": "77 kWh",
+        "seatingCapacity": 7,
+        "cargoSpace": "39.6 cu ft",
+        "chargingTime": "30 minutes (5-80%)"
+      }
+    }
+  ]
+}

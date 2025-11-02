@@ -4,6 +4,11 @@
 - Install nestjs globally `npm i -g @nestjs/cli` version `11.0.7`
 - Install [Docker desktop](https://www.docker.com/)
 
+## Database detail 
+- used the online database
+https://console.neon.tech/app/projects/spring-sky-33566491?database=neondb
+
+
 ## To run Docker
 
 - `npm run docker:up` Run the Docker for `Postgres` and `Adminer`
