@@ -1,0 +1,2 @@
+-- AddForeignKey
+ALTER TABLE "Meta" ADD CONSTRAINT "Meta_id_fkey" FOREIGN KEY ("id") REFERENCES "Vehicle"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

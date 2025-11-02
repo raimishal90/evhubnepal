@@ -1,0 +1,6 @@
+### Token
+
+```JSON
+authorization
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjksImVtYWlsIjoibWluQGdtYWlsLmNvbSIsImlhdCI6MTc1MjQ2NDg0NSwiZXhwIjoxNzUyNDY0OTA1fQ.7Vi9GYiBI6M-kYboRS1oJTwajIsp2yhLEEoFVnC-KIE
+```
