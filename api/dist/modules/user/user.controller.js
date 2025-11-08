@@ -65,8 +65,7 @@ let UserController = class UserController {
             password: await hash.create(payload.password),
         });
         if (createUser) {
-            const { password, ...user } = createUser;
-            const token = await this.tokenService.create(createUser);
+            const { password: userPassword, ...user } = createUser;
             await this.logService.create({
                 action: log_enum_1.LogAction.CREATE,
                 entity: 'User',
@@ -76,8 +75,8 @@ let UserController = class UserController {
             });
             return {
                 status: true,
-                data: { token, user },
-                message: 'Created successfully.',
+                data: { user },
+                message: 'Account created successfully! Please log in to continue.',
             };
         }
         throw new common_1.InternalServerErrorException('Internal Server Error.');
@@ -98,7 +97,7 @@ let UserController = class UserController {
             detail: JSON.stringify(payload),
             note: 'User Updated.',
         });
-        const { password, ...user } = data;
+        const { password: userPassword, ...user } = data;
         return {
             status: true,
             data: user,

@@ -4,7 +4,8 @@ import {
   LoginCredentials, 
   SignupData, 
   AuthData, 
-  User 
+  User,
+  SignupApiResponse
 } from '@/lib/types/auth.types'
 
 class AuthService {
@@ -25,9 +26,9 @@ class AuthService {
     }
   }
 
-  async signup(userData: SignupData): Promise<AuthData> {
+  async signup(userData: SignupData): Promise<SignupApiResponse> {
     try {
-      const response = await api.post<AuthData>('/user', userData)
+      const response = await api.post<SignupApiResponse>('/user', userData)
       return response.data
     } catch (error: any) {
       if (error.response?.data?.message) {

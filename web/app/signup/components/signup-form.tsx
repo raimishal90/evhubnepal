@@ -102,15 +102,15 @@ export function SignupForm() {
 
     try {
       const { firstName, lastName, email, password } = registerData
-      await authService.signup({
+      const response = await authService.signup({
         firstName,
         lastName,
         email,
         password
       })
       
-      // Show success toast and wait before redirecting so user can see it
-      toast.success("Account created successfully! Please log in to continue.")
+      // Show success message from backend or default
+      toast.success(response.message || "Account created successfully! Please log in to continue.")
       
       // Wait 1.5 seconds before redirecting to allow user to see the success message
       setTimeout(() => {
