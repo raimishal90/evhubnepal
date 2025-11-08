@@ -138,7 +138,7 @@ export default function Navbar() {
               <NavigationMenuTrigger>Vehicles</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                  <Link href="/marketplace" legacyBehavior passHref>
+                  <Link href="/marketplace" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                       <div className="flex items-center gap-2">
                         <Car className="h-4 w-4" />
@@ -149,7 +149,7 @@ export default function Navbar() {
                       </div>
                     </NavigationMenuLink>
                   </Link>
-                  <Link href="/new-vehicles" legacyBehavior passHref>
+                  <Link href="/new-vehicles" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                       <div className="flex items-center gap-2">
                         <Zap className="h-4 w-4" />
@@ -160,7 +160,7 @@ export default function Navbar() {
                       </div>
                     </NavigationMenuLink>
                   </Link>
-                  <Link href="/rentals" legacyBehavior passHref>
+                  <Link href="/rentals" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                       <div className="flex items-center gap-2">
                         <Calendar className="h-4 w-4" />
@@ -171,7 +171,7 @@ export default function Navbar() {
                       </div>
                     </NavigationMenuLink>
                   </Link>
-                  <Link href="/sell" legacyBehavior passHref>
+                  <Link href="/sell" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                       <div className="flex items-center gap-2">
                         <Leaf className="h-4 w-4" />
@@ -189,74 +189,74 @@ export default function Navbar() {
               <NavigationMenuTrigger>Companies</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                  <Link href="/companies/tesla" legacyBehavior passHref>
+                  <Link href="/companies/tesla" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>Tesla</NavigationMenuLink>
                   </Link>
-                  <Link href="/companies/byd" legacyBehavior passHref>
+                  <Link href="/companies/byd" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>BYD</NavigationMenuLink>
                   </Link>
-                  <Link href="/companies/mg" legacyBehavior passHref>
+                  <Link href="/companies/mg" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>MG</NavigationMenuLink>
                   </Link>
-                  <Link href="/companies/mahindra" legacyBehavior passHref>
+                  <Link href="/companies/mahindra" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>Mahindra</NavigationMenuLink>
                   </Link>
-                  <Link href="/companies/kia" legacyBehavior passHref>
+                  <Link href="/companies/kia" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>Kia</NavigationMenuLink>
                   </Link>
-                  <Link href="/companies/tata" legacyBehavior passHref>
+                  <Link href="/companies/tata" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>Tata</NavigationMenuLink>
                   </Link>
-                  <Link href="/companies/ather" legacyBehavior passHref>
+                  <Link href="/companies/ather" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>Ather</NavigationMenuLink>
                   </Link>
-                  <Link href="/companies/ola" legacyBehavior passHref>
+                  <Link href="/companies/ola" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>Ola</NavigationMenuLink>
                   </Link>
-                  <Link href="/companies/tvs" legacyBehavior passHref>
+                  <Link href="/companies/tvs" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>TVS</NavigationMenuLink>
                   </Link>
-                  <Link href="/companies/bajaj" legacyBehavior passHref>
+                  <Link href="/companies/bajaj" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>Bajaj</NavigationMenuLink>
                   </Link>
-                  <Link href="/companies/hero" legacyBehavior passHref>
+                  <Link href="/companies/hero" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>Hero</NavigationMenuLink>
                   </Link>
-                  <Link href="/companies/ford" legacyBehavior passHref>
+                  <Link href="/companies/ford" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>Ford</NavigationMenuLink>
                   </Link>
-                  <Link href="/companies/volkswagen" legacyBehavior passHref>
+                  <Link href="/companies/volkswagen" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>Volkswagen</NavigationMenuLink>
                   </Link>
-                  <Link href="/companies/audi" legacyBehavior passHref>
+                  <Link href="/companies/audi" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>Audi</NavigationMenuLink>
                   </Link>
-                  <Link href="/companies/bmw" legacyBehavior passHref>
+                  <Link href="/companies/bmw" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>BMW</NavigationMenuLink>
                   </Link>
-                  <Link href="/companies/mercedes" legacyBehavior passHref>
+                  <Link href="/companies/mercedes" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>Mercedes</NavigationMenuLink>
                   </Link>
-                  <Link href="/companies/porsche" legacyBehavior passHref>
+                  <Link href="/companies/porsche" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>Porsche</NavigationMenuLink>
                   </Link>
-                  <Link href="/companies/rivian" legacyBehavior passHref>
+                  <Link href="/companies/rivian" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>Rivian</NavigationMenuLink>
                   </Link>
-                  <Link href="/companies/lucid" legacyBehavior passHref>
+                  <Link href="/companies/lucid" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>Lucid</NavigationMenuLink>
                   </Link>
-                  <Link href="/companies/nissan" legacyBehavior passHref>
+                  <Link href="/companies/nissan" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>Nissan</NavigationMenuLink>
                   </Link>
-                  <Link href="/companies/hyundai" legacyBehavior passHref>
+                  <Link href="/companies/hyundai" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>Hyundai</NavigationMenuLink>
                   </Link>
                 </div>
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="/rentals" legacyBehavior passHref>
+              <Link href="/rentals" >
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   <div className="flex items-center gap-1">
                     <Calendar className="h-4 w-4" />
@@ -266,7 +266,7 @@ export default function Navbar() {
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="/charging-stations" legacyBehavior passHref>
+              <Link href="/charging-stations" >
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   <div className="flex items-center gap-1">
                     <BatteryCharging className="h-4 w-4" />
@@ -276,7 +276,7 @@ export default function Navbar() {
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="/blog" legacyBehavior passHref>
+              <Link href="/blog" >
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>Blog</NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
@@ -284,23 +284,23 @@ export default function Navbar() {
               <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                  <Link href="/charging-guide" legacyBehavior passHref>
+                  <Link href="/charging-guide" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>Charging Guide</NavigationMenuLink>
                   </Link>
-                  <Link href="/incentives" legacyBehavior passHref>
+                  <Link href="/incentives" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>Tax Incentives</NavigationMenuLink>
                   </Link>
-                  <Link href="/maintenance" legacyBehavior passHref>
+                  <Link href="/maintenance" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>Maintenance Tips</NavigationMenuLink>
                   </Link>
-                  <Link href="/faq" legacyBehavior passHref>
+                  <Link href="/faq" >
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>FAQ</NavigationMenuLink>
                   </Link>
                 </div>
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="/about" legacyBehavior passHref>
+              <Link href="/about" >
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>About</NavigationMenuLink>
               </Link>
             </NavigationMenuItem>

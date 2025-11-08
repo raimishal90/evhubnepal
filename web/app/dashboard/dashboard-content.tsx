@@ -8,11 +8,21 @@ import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { CheckCircle, Calendar, Car, MessageSquare, Clock, ArrowRight, LogOut } from "lucide-react"
 import { useRouter } from "next/navigation"
+import { authService } from "@/app/login/auth.service"
+import { useEffect, useState } from "react"
 
 export function DashboardContent() {
   const router = useRouter()
+  const [user, setUser] = useState<any>(null)
 
-  const handleLogout = () => {
+  useEffect(() => {
+    // Get user data from auth service
+    const { user: userData } = authService.getAuthData()
+    setUser(userData)
+  }, [])
+
+  const handleLogout = async () => {
+    await authService.logout()
     router.push('/')
   }
 
