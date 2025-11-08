@@ -220,6 +220,16 @@ exports.Prisma.LogScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.PasswordResetTokenScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  token: 'token',
+  expiresAt: 'expiresAt',
+  used: 'used',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -248,7 +258,8 @@ exports.Prisma.ModelName = {
   Category: 'Category',
   VehicleCategory: 'VehicleCategory',
   Media: 'Media',
-  Log: 'Log'
+  Log: 'Log',
+  PasswordResetToken: 'PasswordResetToken'
 };
 
 /**

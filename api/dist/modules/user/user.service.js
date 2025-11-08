@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserService = void 0;
 const common_1 = require("@nestjs/common");
+const crypto = require("crypto");
 const prisma_service_1 = require("../prisma/prisma.service");
 const user_meta_service_1 = require("../user-meta/user-meta.service");
 let UserService = class UserService {
@@ -104,6 +105,58 @@ let UserService = class UserService {
             where: {
                 id,
             },
+        });
+        return true;
+    }
+    async createPasswordResetToken(userId) {
+        const token = crypto.randomBytes(32).toString('hex');
+        const expiresAt = new Date();
+        expiresAt.setHours(expiresAt.getHours() + 1);
+        await this.prismaService.passwordResetToken.updateMany({
+            where: {
+                userId,
+                used: false,
+            },
+            data: {
+                used: true,
+            },
+        });
+        await this.prismaService.passwordResetToken.create({
+            data: {
+                userId,
+                token,
+                expiresAt,
+            },
+        });
+        return token;
+    }
+    async validatePasswordResetToken(token) {
+        const resetToken = await this.prismaService.passwordResetToken.findUnique({
+            where: { token },
+        });
+        if (!resetToken) {
+            return null;
+        }
+        if (resetToken.used) {
+            return null;
+        }
+        if (new Date() > resetToken.expiresAt) {
+            return null;
+        }
+        return resetToken.userId;
+    }
+    async resetPassword(token, newPassword) {
+        const userId = await this.validatePasswordResetToken(token);
+        if (!userId) {
+            return false;
+        }
+        await this.prismaService.user.update({
+            where: { id: userId },
+            data: { password: newPassword },
+        });
+        await this.prismaService.passwordResetToken.update({
+            where: { token },
+            data: { used: true },
         });
         return true;
     }

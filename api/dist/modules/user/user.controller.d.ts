@@ -1,4 +1,4 @@
-import { LoginDto } from '@/modules/user/dto/user.dto';
+import { LoginDto, ForgotPasswordDto, ResetPasswordDto } from '@/modules/user/dto/user.dto';
 import { UserService } from '@/modules/user/user.service';
 import { UserDto } from '@/modules/user/dto/user.dto';
 import { PartialUserDto } from '@/modules/user/dto/user.dto';
@@ -22,5 +22,11 @@ export declare class UserController {
     update(id: number, payload: PartialUserDto, userId: number): Promise<ApiResponse<Omit<NormalizeUser, 'password'>>>;
     delete(id: number, userId: number): Promise<ApiResponse<{
         id: number;
+    }>>;
+    forgotPassword(payload: ForgotPasswordDto): Promise<ApiResponse<{
+        message: string;
+    }>>;
+    resetPassword(payload: ResetPasswordDto): Promise<ApiResponse<{
+        message: string;
     }>>;
 }

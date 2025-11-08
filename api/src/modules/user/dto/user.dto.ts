@@ -1,5 +1,5 @@
 import { PartialType, PickType } from '@nestjs/mapped-types';
-import { IsNotEmpty, IsEmail, IsOptional } from 'class-validator';
+import { IsNotEmpty, IsEmail, IsOptional, MinLength } from 'class-validator';
 
 export class UserDto {
   @IsEmail()
@@ -30,3 +30,17 @@ export class LoginDto extends PickType(UserDto, [
   'email',
   'password',
 ] as const) {}
+
+export class ForgotPasswordDto {
+  @IsEmail()
+  email: string;
+}
+
+export class ResetPasswordDto {
+  @IsNotEmpty()
+  token: string;
+
+  @IsNotEmpty()
+  @MinLength(6)
+  password: string;
+}

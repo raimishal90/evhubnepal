@@ -14,5 +14,8 @@ export declare class UserService {
     getById(id: number): Promise<NormalizeUser | null>;
     create(payload: UserDto, roleId?: number): Promise<NormalizeUser | null>;
     update(id: number, payload: PartialUserDto): Promise<NormalizeUser | null>;
-    delete(id: number, softDelete?: Boolean): Promise<Boolean>;
+    delete(id: number, softDelete?: boolean): Promise<boolean>;
+    createPasswordResetToken(userId: number): Promise<string>;
+    validatePasswordResetToken(token: string): Promise<number | null>;
+    resetPassword(token: string, newPassword: string): Promise<boolean>;
 }

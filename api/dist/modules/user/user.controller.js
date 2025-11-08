@@ -119,6 +119,58 @@ let UserController = class UserController {
             message: 'Deleted successfully',
         };
     }
+    async forgotPassword(payload) {
+        const { email } = payload;
+        const user = await this.userService.getByEmail(email);
+        if (!user) {
+            return {
+                status: true,
+                message: 'If an account with that email exists, a password reset link has been sent.',
+                data: { message: 'Password reset email sent' },
+            };
+        }
+        const token = await this.userService.createPasswordResetToken(user.id);
+        console.log(`Password reset token for ${email}: ${token}`);
+        console.log(`Reset link: http://localhost:3000/reset-password?token=${token}`);
+        await this.logService.create({
+            action: log_enum_1.LogAction.UPDATE,
+            entity: 'User',
+            entityId: user.id,
+            performedBy: user.id,
+            note: 'Password reset requested.',
+        });
+        return {
+            status: true,
+            message: 'If an account with that email exists, a password reset link has been sent.',
+            data: { message: 'Password reset email sent' },
+        };
+    }
+    async resetPassword(payload) {
+        const { token, password } = payload;
+        if (!token || !password) {
+            throw new common_1.BadRequestException('Token and password are required.');
+        }
+        const hashedPassword = await hash.create(password);
+        const success = await this.userService.resetPassword(token, hashedPassword);
+        if (!success) {
+            throw new common_1.BadRequestException('Invalid or expired reset token.');
+        }
+        const userId = await this.userService.validatePasswordResetToken(token);
+        if (userId) {
+            await this.logService.create({
+                action: log_enum_1.LogAction.UPDATE,
+                entity: 'User',
+                entityId: userId,
+                performedBy: userId,
+                note: 'Password reset completed.',
+            });
+        }
+        return {
+            status: true,
+            message: 'Password has been reset successfully. You can now log in with your new password.',
+            data: { message: 'Password reset successful' },
+        };
+    }
 };
 exports.UserController = UserController;
 __decorate([
@@ -160,6 +212,22 @@ __decorate([
     __metadata("design:paramtypes", [Number, Number]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "delete", null);
+__decorate([
+    (0, public_decorator_1.Public)(),
+    (0, common_1.Post)('forgot-password'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [user_dto_1.ForgotPasswordDto]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "forgotPassword", null);
+__decorate([
+    (0, public_decorator_1.Public)(),
+    (0, common_1.Post)('reset-password'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [user_dto_1.ResetPasswordDto]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "resetPassword", null);
 exports.UserController = UserController = __decorate([
     (0, common_1.Controller)('user'),
     __metadata("design:paramtypes", [user_service_1.UserService,

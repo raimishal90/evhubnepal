@@ -13,4 +13,11 @@ export declare class PartialUserDto extends PartialUserDto_base {
 declare const LoginDto_base: import("@nestjs/mapped-types").MappedType<Pick<UserDto, "email" | "password">>;
 export declare class LoginDto extends LoginDto_base {
 }
+export declare class ForgotPasswordDto {
+    email: string;
+}
+export declare class ResetPasswordDto {
+    token: string;
+    password: string;
+}
 export {};

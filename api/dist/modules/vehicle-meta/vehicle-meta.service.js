@@ -21,7 +21,14 @@ let VehicleMetaService = class VehicleMetaService extends abstract_meta_service_
         super();
         this.prismaService = prismaService;
         this.db = prismaService.vehicleMeta;
-        this.metaKeys = ['featuredImage', 'galleries', 'weight', 'brand', 'color', 'mileage'];
+        this.metaKeys = [
+            'featuredImage',
+            'galleries',
+            'weight',
+            'brand',
+            'color',
+            'mileage',
+        ];
     }
 };
 exports.VehicleMetaService = VehicleMetaService;

@@ -13,7 +13,6 @@ export class LogService {
     note: string;
     detail?: string;
   }): Promise<boolean> {
-    
     const log = await this.prismaService.log.create({
       data: {
         action: params.action,
