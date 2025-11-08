@@ -55,6 +55,8 @@ export class UserController {
     }
 
     const token = await this.tokenService.create(user);
+    // Destructure to exclude password from response
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password: userPassword, ...userData } = user;
 
     return {
@@ -80,9 +82,7 @@ export class UserController {
   @Post()
   async create(
     @Body() payload: UserDto,
-  ): Promise<
-    ApiResponse<{ token: string; user: Omit<NormalizeUser, 'password'> }>
-  > {
+  ): Promise<ApiResponse<{ user: Omit<NormalizeUser, 'password'> }>> {
     //
     const createUser = await this.userService.create({
       ...payload,
@@ -90,8 +90,9 @@ export class UserController {
     });
 
     if (createUser) {
-      const { password, ...user } = createUser;
-      const token = await this.tokenService.create(createUser);
+      // Destructure to exclude password from response
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { password: userPassword, ...user } = createUser;
 
       await this.logService.create({
         action: LogAction.CREATE,
@@ -103,8 +104,8 @@ export class UserController {
 
       return {
         status: true,
-        data: { token, user },
-        message: 'Created successfully.',
+        data: { user },
+        message: 'Account created successfully! Please log in to continue.',
       };
     }
 
@@ -139,7 +140,9 @@ export class UserController {
       note: 'User Updated.',
     });
 
-    const { password, ...user } = data;
+    // Destructure to exclude password from response
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { password: userPassword, ...user } = data;
 
     return {
       status: true,
