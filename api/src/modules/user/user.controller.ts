@@ -10,8 +10,13 @@ import {
   ForbiddenException,
   InternalServerErrorException,
   Delete,
+  BadRequestException,
 } from '@nestjs/common';
-import { LoginDto } from '@/modules/user/dto/user.dto';
+import {
+  LoginDto,
+  ForgotPasswordDto,
+  ResetPasswordDto,
+} from '@/modules/user/dto/user.dto';
 import { UserService } from '@/modules/user/user.service';
 import { Public } from '@/common/decorators/public.decorator';
 import * as hash from '@/common/utils/hash.util';
@@ -171,6 +176,91 @@ export class UserController {
       status: true,
       data: { id },
       message: 'Deleted successfully',
+    };
+  }
+
+  @Public()
+  @Post('forgot-password')
+  async forgotPassword(
+    @Body() payload: ForgotPasswordDto,
+  ): Promise<ApiResponse<{ message: string }>> {
+    const { email } = payload;
+
+    const user = await this.userService.getByEmail(email);
+
+    if (!user) {
+      // For security, don't reveal if the email exists
+      return {
+        status: true,
+        message:
+          'If an account with that email exists, a password reset link has been sent.',
+        data: { message: 'Password reset email sent' },
+      };
+    }
+
+    const token = await this.userService.createPasswordResetToken(user.id);
+
+    // TODO: Send email with reset link containing the token
+    // For now, we'll log it to the console
+    console.log(`Password reset token for ${email}: ${token}`);
+    console.log(
+      `Reset link: http://localhost:3000/reset-password?token=${token}`,
+    );
+
+    await this.logService.create({
+      action: LogAction.UPDATE,
+      entity: 'User',
+      entityId: user.id,
+      performedBy: user.id,
+      note: 'Password reset requested.',
+    });
+
+    return {
+      status: true,
+      message:
+        'If an account with that email exists, a password reset link has been sent.',
+      data: { message: 'Password reset email sent' },
+    };
+  }
+
+  @Public()
+  @Post('reset-password')
+  async resetPassword(
+    @Body() payload: ResetPasswordDto,
+  ): Promise<ApiResponse<{ message: string }>> {
+    const { token, password } = payload;
+
+    if (!token || !password) {
+      throw new BadRequestException('Token and password are required.');
+    }
+
+    // Hash the new password
+    const hashedPassword = await hash.create(password);
+
+    // Reset the password
+    const success = await this.userService.resetPassword(token, hashedPassword);
+
+    if (!success) {
+      throw new BadRequestException('Invalid or expired reset token.');
+    }
+
+    // Get user ID from token for logging
+    const userId = await this.userService.validatePasswordResetToken(token);
+    if (userId) {
+      await this.logService.create({
+        action: LogAction.UPDATE,
+        entity: 'User',
+        entityId: userId,
+        performedBy: userId,
+        note: 'Password reset completed.',
+      });
+    }
+
+    return {
+      status: true,
+      message:
+        'Password has been reset successfully. You can now log in with your new password.',
+      data: { message: 'Password reset successful' },
     };
   }
 }
