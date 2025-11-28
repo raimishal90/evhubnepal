@@ -9,6 +9,7 @@ import { LoginCredentials } from "@/lib/types/auth.types"
 import toast from "react-hot-toast"
 import { isValidEmail } from "../auth.util"
 import { authService } from "../auth.service"
+import { Eye, EyeOff } from "lucide-react"
 
 export default function LoginForm({ handleTabChange }: { handleTabChange: (tab: string) => void }) {
     const router = useRouter()
@@ -22,6 +23,7 @@ export default function LoginForm({ handleTabChange }: { handleTabChange: (tab: 
     const [isLoading, setIsLoading] = useState(false)
     const [loginData, setLoginData] = useState<LoginCredentials>(initialLoginData)
     const [rememberMe, setRememberMe] = useState(false)
+    const [showPassword, setShowPassword] = useState(false)
 
     const handleLoginChange = useCallback((field: keyof LoginCredentials, value: string) => {
         setLoginData((prev) => ({ ...prev, [field]: value }))
@@ -104,18 +106,34 @@ export default function LoginForm({ handleTabChange }: { handleTabChange: (tab: 
                         Forgot password?
                     </Link>
                 </div>
-                <Input
-                    id="password"
-                    type="password"
-                    placeholder="••••••••"
-                    value={loginData.password}
-                    onChange={(e) => handleLoginChange("password", e.target.value)}
-                    onBlur={() => handleBlur("password")}
-                    aria-invalid={Boolean(touched.password && errors.password)}
-                    aria-describedby={touched.password && errors.password ? "password-error" : undefined}
-                    // required (validated in JS)
-                    disabled={isLoading}
-                />
+                <div className="relative">
+                    <Input
+                        id="password"
+                        type={showPassword ? "text" : "password"}
+                        placeholder="••••••••"
+                        value={loginData.password}
+                        onChange={(e) => handleLoginChange("password", e.target.value)}
+                        onBlur={() => handleBlur("password")}
+                        aria-invalid={Boolean(touched.password && errors.password)}
+                        aria-describedby={touched.password && errors.password ? "password-error" : undefined}
+                        // required (validated in JS)
+                        disabled={isLoading}
+                        className="pr-10"
+                    />
+                    <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                        disabled={isLoading}
+                        aria-label={showPassword ? "Hide password" : "Show password"}
+                    >
+                        {showPassword ? (
+                            <EyeOff className="h-4 w-4" />
+                        ) : (
+                            <Eye className="h-4 w-4" />
+                        )}
+                    </button>
+                </div>
                 {touched.password && errors.password && (
                     <p id="password-error" className="text-sm text-red-500 mt-1">{errors.password}</p>
                 )}
