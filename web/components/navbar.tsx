@@ -16,6 +16,8 @@ import {
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from "@/components/ui/dropdown-menu"
 import { Battery, BatteryCharging, Leaf, Menu, Search, User, Zap, Calendar, Building2, LogOut, Settings, Car } from "lucide-react"
 import SearchDialog from "@/components/search-dialog"
+import { authService } from "@/app/login/auth.service"
+import type { User as UserType } from "@/lib/types/auth.types"
 
 import { useRouter } from "next/navigation"
 
@@ -23,6 +25,8 @@ export default function Navbar() {
   const [isSearchDialogOpen, setIsSearchDialogOpen] = useState(false)
   const [visible, setVisible] = useState(true)
   const [prevScrollPos, setPrevScrollPos] = useState(0)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [user, setUser] = useState<UserType | null>(null)
   const router = useRouter()
 
   useEffect(() => {
@@ -40,8 +44,37 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [prevScrollPos])
 
+  // Check authentication status
+  useEffect(() => {
+    const checkAuth = () => {
+      const authenticated = authService.isAuthenticated()
+      const authData = authService.getAuthData()
+      
+      setIsAuthenticated(authenticated)
+      setUser(authData.user)
+    }
+
+    // Check on mount
+    checkAuth()
+
+    // Listen for storage changes (login/logout in other tabs)
+    window.addEventListener('storage', checkAuth)
+    
+    // Listen for custom auth events
+    window.addEventListener('auth-change', checkAuth)
+
+    return () => {
+      window.removeEventListener('storage', checkAuth)
+      window.removeEventListener('auth-change', checkAuth)
+    }
+  }, [])
+
   const handleLogout = () => {
-    logout()
+    authService.logout()
+    setIsAuthenticated(false)
+    setUser(null)
+    // Dispatch custom event to update other components
+    window.dispatchEvent(new Event('auth-change'))
     router.push('/')
   }
 
@@ -103,7 +136,7 @@ export default function Navbar() {
               <Link href="/contact" className="text-lg font-medium">
                 Contact
               </Link>
-              {false ? (
+              {isAuthenticated ? (
                 <>
                   <Link href="/dashboard" className="text-lg font-medium">
                     Dashboard
@@ -313,7 +346,7 @@ export default function Navbar() {
             <span className="sr-only">Search</span>
           </Button>
 
-          {false ? (
+          {isAuthenticated ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon" className="relative">

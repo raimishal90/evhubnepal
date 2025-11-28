@@ -64,13 +64,19 @@ export default function LoginForm({ handleTabChange }: { handleTabChange: (tab: 
         try {
             const { email, password } = loginData
             const response = await authService.login({ email, password }, rememberMe)
-            if (response) router.push("/dashboard")
+            if (response) {
+                // Dispatch auth change event to update navbar
+                if (typeof window !== 'undefined') {
+                    window.dispatchEvent(new Event('auth-change'))
+                }
+                router.push("/dashboard")
+            }
         } catch (error) {
             toast.error(error instanceof Error ? error.message : "Login failed. An unexpected error occurred.")
         } finally {
             setIsLoading(false)
         }
-    }, [loginData, validate, router, touched])
+    }, [loginData, validate, router, touched, rememberMe])
 
     return (
         <form onSubmit={handleLogin} className="space-y-4 mt-4">
