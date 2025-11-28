@@ -25,8 +25,21 @@ export default function Navbar() {
   const [isSearchDialogOpen, setIsSearchDialogOpen] = useState(false)
   const [visible, setVisible] = useState(true)
   const [prevScrollPos, setPrevScrollPos] = useState(0)
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [user, setUser] = useState<UserType | null>(null)
+  const [isAuthLoading, setIsAuthLoading] = useState(true)
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    // Check auth immediately on client-side to prevent flash
+    if (typeof window !== 'undefined') {
+      return authService.isAuthenticated()
+    }
+    return false
+  })
+  const [user, setUser] = useState<UserType | null>(() => {
+    // Get user data immediately on client-side
+    if (typeof window !== 'undefined') {
+      return authService.getAuthData().user
+    }
+    return null
+  })
   const router = useRouter()
 
   useEffect(() => {
@@ -52,9 +65,10 @@ export default function Navbar() {
       
       setIsAuthenticated(authenticated)
       setUser(authData.user)
+      setIsAuthLoading(false)
     }
 
-    // Check on mount
+    // Check on mount (set loading to false after initial check)
     checkAuth()
 
     // Listen for storage changes (login/logout in other tabs)
@@ -136,25 +150,27 @@ export default function Navbar() {
               <Link href="/contact" className="text-lg font-medium">
                 Contact
               </Link>
-              {isAuthenticated ? (
-                <>
-                  <Link href="/dashboard" className="text-lg font-medium">
-                    Dashboard
-                  </Link>
-                  <Button variant="outline" onClick={handleLogout} className="justify-start">
-                    <LogOut className="h-4 w-4 mr-2" />
-                    Logout
-                  </Button>
-                </>
-              ) : (
-                <>
-                  <Link href="/login" className="text-lg font-medium">
-                    Login
-                  </Link>
-                  <Link href="/login?tab=register" className="text-lg font-medium">
-                    Register
-                  </Link>
-                </>
+              {!isAuthLoading && (
+                isAuthenticated ? (
+                  <>
+                    <Link href="/dashboard" className="text-lg font-medium">
+                      Dashboard
+                    </Link>
+                    <Button variant="outline" onClick={handleLogout} className="justify-start">
+                      <LogOut className="h-4 w-4 mr-2" />
+                      Logout
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Link href="/login" className="text-lg font-medium">
+                      Login
+                    </Link>
+                    <Link href="/login?tab=register" className="text-lg font-medium">
+                      Register
+                    </Link>
+                  </>
+                )
               )}
             </nav>
           </SheetContent>
@@ -346,62 +362,64 @@ export default function Navbar() {
             <span className="sr-only">Search</span>
           </Button>
 
-          {isAuthenticated ? (
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="relative">
-                  <User className="h-5 w-5" />
-                  <span className="sr-only">User menu</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56">
-                <div className="flex items-center justify-start gap-2 p-2">
-                  <div className="flex flex-col space-y-1 leading-none">
-                    <p className="font-medium">
-                      {user?.firstName && user?.lastName 
-                        ? `${user.firstName} ${user.lastName}` 
-                        : user?.email}
-                    </p>
-                    <p className="w-[200px] truncate text-sm text-muted-foreground">
-                      {user?.email}
-                    </p>
+          {!isAuthLoading && (
+            isAuthenticated ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="icon" className="relative">
+                    <User className="h-5 w-5" />
+                    <span className="sr-only">User menu</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                  <div className="flex items-center justify-start gap-2 p-2">
+                    <div className="flex flex-col space-y-1 leading-none">
+                      <p className="font-medium">
+                        {user?.firstName && user?.lastName 
+                          ? `${user.firstName} ${user.lastName}` 
+                          : user?.email}
+                      </p>
+                      <p className="w-[200px] truncate text-sm text-muted-foreground">
+                        {user?.email}
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                  <Link href="/dashboard" className="cursor-pointer">
-                    <Car className="mr-2 h-4 w-4" />
-                    <span>Dashboard</span>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/dashboard/profile" className="cursor-pointer">
-                    <User className="mr-2 h-4 w-4" />
-                    <span>Profile</span>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/dashboard/settings" className="cursor-pointer">
-                    <Settings className="mr-2 h-4 w-4" />
-                    <span>Settings</span>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
-                  <LogOut className="mr-2 h-4 w-4" />
-                  <span>Log out</span>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          ) : (
-            <div className="flex items-center gap-2">
-              <Button variant="ghost" asChild>
-                <Link href="/login">Log in</Link>
-              </Button>
-              <Button asChild>
-                <Link href="/login?tab=register">Sign up</Link>
-              </Button>
-            </div>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem asChild>
+                    <Link href="/dashboard" className="cursor-pointer">
+                      <Car className="mr-2 h-4 w-4" />
+                      <span>Dashboard</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href="/dashboard/profile" className="cursor-pointer">
+                      <User className="mr-2 h-4 w-4" />
+                      <span>Profile</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href="/dashboard/settings" className="cursor-pointer">
+                      <Settings className="mr-2 h-4 w-4" />
+                      <span>Settings</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>Log out</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <div className="flex items-center gap-2">
+                <Button variant="ghost" asChild>
+                  <Link href="/login">Log in</Link>
+                </Button>
+                <Button asChild>
+                  <Link href="/login?tab=register">Sign up</Link>
+                </Button>
+              </div>
+            )
           )}
         </div>
       </div>
