@@ -17,7 +17,6 @@ export declare class UserController {
     }>>;
     get(): Promise<ApiResponse<NormalizeUser[]>>;
     create(payload: UserDto): Promise<ApiResponse<{
-        token: string;
         user: Omit<NormalizeUser, 'password'>;
     }>>;
     update(id: number, payload: PartialUserDto, userId: number): Promise<ApiResponse<Omit<NormalizeUser, 'password'>>>;

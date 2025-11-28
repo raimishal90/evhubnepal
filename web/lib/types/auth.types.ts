@@ -106,3 +106,12 @@ export interface SignupResponse {
   error?: string;
   validationErrors?: Record<string, string[]>;
 }
+
+// Signup API response (without token - user must login after signup)
+export interface SignupApiResponse {
+  status: boolean;
+  message: string;
+  data: {
+    user: User;
+  };
+}

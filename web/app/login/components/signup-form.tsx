@@ -108,29 +108,29 @@ export function SignupForm({ handleTabChange }: SignupFormProps) {
 
     try {
       const { firstName, lastName, email, password } = formData
-      const authData = await authService.signup({
-          firstName,
-          lastName,
-          email,
-          password
+      const response = await authService.signup({
+        firstName,
+        lastName,
+        email,
+        password
       })
-        
-        // Store authentication data
-        if (authData.token && authData.user) {
-          authService.setAuthData(authData.token, authData.user)
-        }
-        
-        toast.success("Account created successfully! Please log in.")
+      
+      // Show success message from backend or default
+      toast.success(response.message || "Account created successfully! Please log in to continue.")
+      
+      // Redirect to login page after a short delay so user can see the success message
+      setTimeout(() => {
         if (handleTabChange) {
           handleTabChange("login")
         } else {
           router.push("/login")
         }
+        setIsLoading(false)
+      }, 1500)
      
     } catch (error: any) {
-        toast.error(error instanceof Error ? error.message : "Signup failed. An unexpected error occurred.")
-    } finally {
-        setIsLoading(false)
+      toast.error(error instanceof Error ? error.message : "Signup failed. An unexpected error occurred.")
+      setIsLoading(false)
     }
   }
 
