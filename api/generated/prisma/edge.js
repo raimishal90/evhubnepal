@@ -233,7 +233,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/mishal/Mishal/My Projects/evhubnepal/api/generated/prisma",
+      "value": "/workspaces/evhubnepal/api/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -242,12 +242,12 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "darwin-arm64",
+        "value": "debian-openssl-1.1.x",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/mishal/Mishal/My Projects/evhubnepal/api/prisma/schema.prisma",
+    "sourceFilePath": "/workspaces/evhubnepal/api/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -261,6 +261,7 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": true,
   "inlineDatasources": {
     "db": {
       "url": {

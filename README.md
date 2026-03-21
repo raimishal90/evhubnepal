@@ -6,7 +6,7 @@ This repository contains the full source code for both the website (frontend) an
 
 ## Caution
 
-admin user most be present in database with id 1 to function user db operation
+admin user must be present in database with id 1 to function user db operation
 
 ## Project Structure
 
@@ -15,91 +15,128 @@ admin user most be present in database with id 1 to function user db operation
 
 ---
 
-## Prerequisites (Versions Used)
+## Prerequisites
 
-- **Node.js**: v18+ (recommended)
-- **pnpm**: v8+ (preferred) or npm/yarn
-- **Docker & Docker Compose**: Latest
+- **Node.js**: v18+ (check with `node -v`)
+- **npm**: v8+ (check with `npm -v`)
 
-## Main Tech Stack & Versions
+## Main Tech Stack
 
 - **Backend (API)**
   - NestJS: ^11.0.1
   - Prisma: ^6.12.0
-  - PostgreSQL: Official Docker image (default: latest)
+  - PostgreSQL (Neon - cloud hosted)
 - **Frontend (Web)**
-  - Next.js: 15.2.4
+  - Next.js: ^15.5.6
   - React: ^19
   - Tailwind CSS: ^3.4.17
   - TypeScript: ^5
 
 ---
 
-## Setup Instructions
+## How to Run the Application
 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/evhubnepal-com/evhubnepal.git
+git clone https://github.com/raimishal90/evhubnepal.git
 cd evhubnepal
 ```
 
-### 2. Install Dependencies
+### 2. Setup Environment Variables
+
+Create a `.env` file inside the `api/` directory with the following variables:
+
+```env
+DATABASE_URL=<your-postgresql-connection-string>
+JWT_SECRET=<your-jwt-secret>
+SIGNIN_EXPIRE_TIME=<token-expiry-time>
+PWD_SECRET=<your-password-secret>
+PORT=3001
+```
+
+> The project uses a cloud-hosted PostgreSQL database (Neon). No local Docker setup is required for the database.
+
+### 3. Install Dependencies
 
 #### Backend (API)
 
 ```bash
 cd api
-pnpm install
-# Node version: v18+ (check with `node -v`)
-# pnpm version: v8+ (check with `pnpm -v`)
+npm install
 ```
 
 #### Frontend (Web)
 
 ```bash
 cd ../web
-pnpm install
-# Node version: v18+ (check with `node -v`)
-# pnpm version: v8+ (check with `pnpm -v`)
-```
-
-### 3. Setup and Run PostgreSQL (Docker)
-
-```bash
-cd ../api
-docker-compose up -d
+npm install
 ```
 
 ### 4. Setup Database (Prisma)
 
+Run Prisma migrations to set up the database schema:
+
 ```bash
-cd api
-pnpm prisma migrate dev
+cd ../api
+npx prisma migrate dev
+```
+
+To seed the database (if seed file exists):
+
+```bash
+npx prisma db seed
+```
+
+To view the database in a browser UI:
+
+```bash
+npx prisma studio
 ```
 
 ### 5. Run the Applications
 
-#### Backend (API)
+You need to run both the API and the web app in **separate terminals**.
+
+#### Terminal 1 - Backend (API)
 
 ```bash
 cd api
-pnpm start:dev
+npm run start:dev
 ```
 
-#### Frontend (Web)
+The API will start on **http://localhost:3001** (or the PORT defined in `.env`).
+
+#### Terminal 2 - Frontend (Web)
 
 ```bash
 cd web
-pnpm dev
+npm run dev
 ```
+
+The web app will start on **http://localhost:3000**.
+
+### 6. Access the Application
+
+- **Web App**: http://localhost:3000
+- **API Server**: http://localhost:3001
 
 ---
 
-## Additional Notes
+## Useful Commands
 
-- Environment variables may be required. See `.env.example` in each app (if present).
-- For more details, see the `README.md` files in `api/` and `web/`.
+| Command | Directory | Description |
+| --- | --- | --- |
+| `npm run start:dev` | `api/` | Start API in development mode (watch) |
+| `npm run dev` | `web/` | Start web app in development mode |
+| `npm run build` | `api/` | Build the API for production |
+| `npm run build` | `web/` | Build the web app for production |
+| `npm run start:prod` | `api/` | Run the API in production mode |
+| `npm run start` | `web/` | Run the web app in production mode |
+| `npx prisma studio` | `api/` | Open Prisma database browser UI |
+| `npx prisma migrate dev` | `api/` | Run database migrations |
+| `npm run lint` | `api/` or `web/` | Run linter |
+| `npm test` | `api/` | Run API tests |
 
 ---
 

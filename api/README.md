@@ -1,48 +1,63 @@
-## To setup project
+# EVHubNepal API
 
-- Node version `20.18.1` and npm version `10.8.2`
-- Install nestjs globally `npm i -g @nestjs/cli` version `11.0.7`
-- Install [Docker desktop](https://www.docker.com/)
+Backend service for EVHubNepal built with NestJS, Prisma, and PostgreSQL.
 
-## Database detail 
-- used the online database
-https://console.neon.tech/app/projects/spring-sky-33566491?database=neondb
+## Prerequisites
 
+- **Node.js**: v18+
+- **npm**: v8+
 
-## To run Docker
+## Setup
 
-- `npm run docker:up` Run the Docker for `Postgres` and `Adminer`
-- No need to run `Adminer` as we can directly access database using `npx prisma studio`
-- `sudo chmod 777 postgres-data` Change the permission of database folder
+### 1. Install Dependencies
 
-## Access Postgres terminal
+```bash
+npm install
+```
 
-- To access postgres terminal `docker exec -it postgres_db /bin/bash`
-- Enter postgres `psql -U postgres` and `\l` to list all database
-- `rm -rf ./data/db/*` clear volume files
+### 2. Environment Variables
 
-## To start the API
+Create a `.env` file in this directory with the following variables:
 
-- `npm run start:dev`
+```env
+DATABASE_URL=<your-postgresql-connection-string>
+JWT_SECRET=<your-jwt-secret>
+SIGNIN_EXPIRE_TIME=<token-expiry-time>
+PWD_SECRET=<your-password-secret>
+PORT=3001
+```
 
-## To Connect Adminer
+> The project uses a cloud-hosted PostgreSQL database (Neon). No local Docker setup is required.
 
-- System: PostgreSQL
-- Server: postgres_db => Container name
-- Username: postgres
-- Password: root
-- Database: evhubnepal
+### 3. Database Setup (Prisma)
 
+```bash
+npx prisma migrate dev    # Run migrations
+npx prisma db seed        # Seed the database (if seed file exists)
+npx prisma studio         # Open database browser UI
+```
 
-## DTO => Data transfer object
+## Running the API
 
+```bash
+npm run start:dev         # Development mode (watch)
+npm run start:prod        # Production mode (requires build first)
+npm run build             # Build for production
+```
 
-## Argon 2
-- We can hash the refresh token in application and there is problem with bcrypt because the verificaiton algorithm limited to 72 bits
+The API runs on **http://localhost:3001** by default.
 
+## Testing
 
-## To read ENV file
-- Install this pakcage `@nestjs/config`
-- Import package `import { ConfigService } from '@nestjs/config';`
-- Inject service `constructor(private readonly configService: ConfigService)`
-- Accsess using get function `const DB_URL = configService.get<string>('DATABASE_URL');`
+```bash
+npm test                  # Run unit tests
+npm run test:watch        # Run tests in watch mode
+npm run test:cov          # Run tests with coverage
+npm run test:e2e          # Run end-to-end tests
+```
+
+## Useful Notes
+
+- **DTO (Data Transfer Object)**: Used for request validation and data shaping.
+- **Argon2**: Used for hashing refresh tokens (preferred over bcrypt due to its 72-byte limit).
+- **Config Service**: Environment variables are accessed via `@nestjs/config` using `ConfigService.get<string>('KEY')`.
