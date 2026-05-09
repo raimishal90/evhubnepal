@@ -60,7 +60,7 @@ CUSTOM_KEY=<optional>
 ANALYZE=false
 ```
 
-> Note: frontend API base URL is currently hardcoded in `web/lib/config.ts` as `http://localhost:3001`. For production, update this value (preferably via an environment-driven config approach).
+> Note: frontend API base URL is currently hardcoded in `web/lib/config.ts` as `http://localhost:3001`. Before production deployment, manually update `config.api.baseUrl` in that file to your production API URL (or refactor it to use environment-based configuration).
 
 ### 3) Install dependencies
 
@@ -133,7 +133,7 @@ npm run dev
 
 ## Project Notes
 
-- Admin authorization currently depends on **role ID = 1** (`admin` role). Run `npx prisma db seed` first so role data exists, then ensure admin users are created with `roleId: 1`.
+- Admin authorization currently depends on **role ID = 1** (`admin` role). `npx prisma db seed` creates roles only (including role `id=1`), not users. New users created through `POST /user` currently default to `roleId: 1` via backend service logic.
 - Additional module-level docs are available:
   - `api/README.md`
   - `web/README.md`
