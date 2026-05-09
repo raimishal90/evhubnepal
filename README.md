@@ -60,7 +60,7 @@ CUSTOM_KEY=<optional>
 ANALYZE=false
 ```
 
-> Note: frontend API base URL is currently hardcoded in `web/lib/config.ts` as `http://localhost:3001`.
+> Note: frontend API base URL is currently hardcoded in `web/lib/config.ts` as `http://localhost:3001`. For production, update this value (preferably via an environment-driven config approach).
 
 ### 3) Install dependencies
 
@@ -72,7 +72,7 @@ cd ../web
 npm install
 ```
 
-If frontend install fails due peer dependency conflict (React 19 vs `react-day-picker`), use:
+If frontend install fails due to a peer dependency conflict (React 19 vs `react-day-picker`), use:
 
 ```bash
 npm install --legacy-peer-deps
@@ -133,7 +133,7 @@ npm run dev
 
 ## Project Notes
 
-- The system expects an admin user with **ID = 1** for some user DB operations.
+- Admin authorization currently depends on **role ID = 1** (`admin` role). Run `npx prisma db seed` first so role data exists, then ensure admin users are created with `roleId: 1`.
 - Additional module-level docs are available:
   - `api/README.md`
   - `web/README.md`
