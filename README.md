@@ -1,51 +1,49 @@
 # EVHubNepal
 
-EVHubNepal is an online platform designed to make information about electric vehicles (EVs) easily accessible to everyone in Nepal. Whether you are looking to buy, sell, or learn more about EVs, charging stations, or the latest news, EVHubNepal brings everything together in one place. The platform features a user-friendly website and a powerful backend to help users explore EV options, find charging locations, and connect with the EV community.
+EVHubNepal is a full-stack platform focused on electric vehicles in Nepal.
+It includes:
+- A **frontend web app** for browsing EVs, charging stations, and EV-related content.
+- A **backend API** for authentication, vehicles, categories, media, and related data operations.
 
-This repository contains the full source code for both the website (frontend) and the server (backend) that power EVHubNepal.
+## Repository Structure
 
-## Caution
+- `web/` – Next.js frontend (React + Tailwind CSS)
+- `api/` – NestJS backend (Prisma + PostgreSQL)
+- `Requirement.md` – high-level product requirements
+- `Reference.md` – reference site link
 
-admin user must be present in database with id 1 to function user db operation
+## Tech Stack
 
-## Project Structure
+### Frontend (`web`)
+- Next.js 15
+- React 19
+- TypeScript
+- Tailwind CSS
 
-- `api/` - Backend service (NestJS, PostgreSQL, Prisma)
-- `web/` - Frontend application (Next.js, React, Tailwind CSS)
-
----
+### Backend (`api`)
+- NestJS 11
+- Prisma ORM
+- PostgreSQL
+- JWT authentication
 
 ## Prerequisites
 
-- **Node.js**: v18+ (check with `node -v`)
-- **npm**: v8+ (check with `npm -v`)
+- Node.js 18+
+- npm 8+
+- PostgreSQL connection string (for API)
 
-## Main Tech Stack
+## Quick Start
 
-- **Backend (API)**
-  - NestJS: ^11.0.1
-  - Prisma: ^6.12.0
-  - PostgreSQL (Neon - cloud hosted)
-- **Frontend (Web)**
-  - Next.js: ^15.5.6
-  - React: ^19
-  - Tailwind CSS: ^3.4.17
-  - TypeScript: ^5
-
----
-
-## How to Run the Application
-
-### 1. Clone the Repository
+### 1) Clone the repository
 
 ```bash
 git clone https://github.com/raimishal90/evhubnepal.git
 cd evhubnepal
 ```
 
-### 2. Setup Environment Variables
+### 2) Configure environment variables
 
-Create a `.env` file inside the `api/` directory with the following variables:
+Create `api/.env`:
 
 ```env
 DATABASE_URL=<your-postgresql-connection-string>
@@ -55,91 +53,96 @@ PWD_SECRET=<your-password-secret>
 PORT=3001
 ```
 
-> The project uses a cloud-hosted PostgreSQL database (Neon). No local Docker setup is required for the database.
+Optional frontend environment variables (in `web/.env.local` if needed):
 
-### 3. Install Dependencies
+```env
+CUSTOM_KEY=<optional>
+ANALYZE=false
+```
 
-#### Backend (API)
+> Note: frontend API base URL is currently hardcoded in `web/lib/config.ts` as `http://localhost:3001`.
+
+### 3) Install dependencies
 
 ```bash
 cd api
 npm install
-```
 
-#### Frontend (Web)
-
-```bash
 cd ../web
 npm install
 ```
 
-### 4. Setup Database (Prisma)
-
-Run Prisma migrations to set up the database schema:
+If frontend install fails due peer dependency conflict (React 19 vs `react-day-picker`), use:
 
 ```bash
-cd ../api
-npx prisma migrate dev
+npm install --legacy-peer-deps
 ```
 
-To seed the database (if seed file exists):
+### 4) Prepare database (API)
 
 ```bash
+cd api
+npx prisma migrate dev
 npx prisma db seed
 ```
 
-To view the database in a browser UI:
+Open Prisma Studio (optional):
 
 ```bash
 npx prisma studio
 ```
 
-### 5. Run the Applications
+### 5) Run the apps (in separate terminals)
 
-You need to run both the API and the web app in **separate terminals**.
-
-#### Terminal 1 - Backend (API)
+Terminal A (API):
 
 ```bash
 cd api
 npm run start:dev
 ```
 
-The API will start on **http://localhost:3001** (or the PORT defined in `.env`).
-
-#### Terminal 2 - Frontend (Web)
+Terminal B (Web):
 
 ```bash
 cd web
 npm run dev
 ```
 
-The web app will start on **http://localhost:3000**.
+## Access URLs
 
-### 6. Access the Application
+- Web: `http://localhost:3000`
+- API: `http://localhost:3001`
 
-- **Web App**: http://localhost:3000
-- **API Server**: http://localhost:3001
+## Available Scripts
 
----
+### API (`api/package.json`)
 
-## Useful Commands
+- `npm run start:dev` – run API in watch mode
+- `npm run build` – build API
+- `npm run start:prod` – run built API
+- `npm run lint` – run eslint (auto-fix enabled)
+- `npm test` – run unit tests
+- `npm run test:e2e` – run end-to-end tests
 
-| Command | Directory | Description |
-| --- | --- | --- |
-| `npm run start:dev` | `api/` | Start API in development mode (watch) |
-| `npm run dev` | `web/` | Start web app in development mode |
-| `npm run build` | `api/` | Build the API for production |
-| `npm run build` | `web/` | Build the web app for production |
-| `npm run start:prod` | `api/` | Run the API in production mode |
-| `npm run start` | `web/` | Run the web app in production mode |
-| `npx prisma studio` | `api/` | Open Prisma database browser UI |
-| `npx prisma migrate dev` | `api/` | Run database migrations |
-| `npm run lint` | `api/` or `web/` | Run linter |
-| `npm test` | `api/` | Run API tests |
+### Web (`web/package.json`)
 
----
+- `npm run dev` – run Next.js dev server
+- `npm run build` – production build
+- `npm run start` – run production server
+- `npm run lint` – run Next.js lint
 
-## License
+## Project Notes
 
-[MIT](LICENSE)
+- The system expects an admin user with **ID = 1** for some user DB operations.
+- Additional module-level docs are available:
+  - `api/README.md`
+  - `web/README.md`
+  - `web/API_INTEGRATION_README.md`
+  - `web/AXIOS_SETUP_README.md`
+  - `web/AUTH_ERROR_HANDLING_README.md`
+
+## Troubleshooting
+
+- If API lint fails, it may be due to existing strict TypeScript ESLint issues in the current codebase.
+- If `npm test` in API reports "No tests found", verify expected `*.spec.ts` files exist under `api/src`.
+- If frontend build/lint fails after dependency installation issues, reinstall with `--legacy-peer-deps`.
